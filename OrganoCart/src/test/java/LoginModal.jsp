@@ -24,7 +24,7 @@
 					<button type="submit">Sign in</button>
 					<button type="reset">Reset</button><br/>
 					<a href="Forgotpassword">Forgot Password</a>
-					<a href="Signup">Not registered ? New User click here</a>					
+					<a href="Signup">First time visitor ? click here to Sign Up</a>					
 				</form>
 			</div>
 			<!-- modal body -->
