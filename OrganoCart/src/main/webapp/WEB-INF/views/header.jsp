@@ -144,7 +144,7 @@ li:hover {
 										class="btn glyphicon glyphicon-log-out"></span> Logout</a></li>
 							</ul></li>
 						<li><a href="showcartpage"
-							style="color: #9ccc65; font-size: 19px"> <span
+							style="color: #99cc65; font-size: 19px"> <span
 								class="glyphicon glyphicon-shopping-cart"></span> <span
 								class="badge">${sessionScope.grandquantity}</span>
 						</a></li>
