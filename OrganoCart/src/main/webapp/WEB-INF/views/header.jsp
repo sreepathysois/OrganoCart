@@ -45,7 +45,7 @@ li:hover {
 }
 
 #companyname {
-	color: #ffff40;
+	color: #ffff00;
 	font-size: 0.8cm;
 	margin-left: 190px;
 	font-family: Apple Chancery, san-serif;
