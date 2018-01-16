@@ -16,22 +16,19 @@ pipeline {
         
         stage ('Compile') {
             steps {
-                sh 'cd OrganoCart'
-                sh 'mvn -Dmaven.test.failure.ignore=true clean compile' 
+                sh 'mvn -Dmaven.test.failure.ignore=true -f OrganoCart/pom.xml clean compile' 
             }
         }
         
         stage ('Test') {
             steps {
-                sh 'cd OrganoCart'
-                sh 'mvn -Dmaven.test.failure.ignore=true clean test' 
+                sh 'mvn -Dmaven.test.failure.ignore=true  -f OrganoCart/pom.xml clean test' 
             }
         }
         
         stage ('Build') {
             steps {
-                sh 'cd OrganoCart'
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+                sh 'mvn -Dmaven.test.failure.ignore=true  -f OrganoCart/pom.xml install' 
             }
             post {
                 success {
