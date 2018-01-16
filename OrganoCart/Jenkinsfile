@@ -16,18 +16,21 @@ pipeline {
         
         stage ('Compile') {
             steps {
+                sh 'cd OrganoCart'
                 sh 'mvn -Dmaven.test.failure.ignore=true clean compile' 
             }
         }
         
         stage ('Test') {
             steps {
+                sh 'cd OrganoCart'
                 sh 'mvn -Dmaven.test.failure.ignore=true clean test' 
             }
         }
         
         stage ('Build') {
             steps {
+                sh 'cd OrganoCart'
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
             post {
