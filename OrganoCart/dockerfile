@@ -1,4 +1,4 @@
 # Dockerfile
 FROM tomcat
 
-ADD OrganoCart.war /usr/local/tomcat/webapps/organocart.war
+ADD target/OrganoCart.war /usr/local/tomcat/webapps/organocart.war
