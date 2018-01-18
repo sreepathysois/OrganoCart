@@ -39,9 +39,11 @@ pipeline {
         
         stage ('Push Image to DockerHub') {
             steps {
-                sh 'docker -H :1234 login -u santoshkatageri  -p S$s8880608429 https://hub.docker.com/' 
-                sh 'docker -H :1234 push santoshkatageri/organocart-blue:latest'
-                
+                sh '#docker -H :1234 login -u santoshkatageri  -p S$s8880608429 https://hub.docker.com/' 
+                sh '#docker -H :1234 push santoshkatageri/organocart-blue:latest'
+                docker.withRegistry('266803688543.dkr.ecr.eu-west-1.amazonaws.com', 'ecr:eu-west-1:jenkins-aws') {
+                docker.image('santoshkatageri/organocart-blue').push('latest')
+                }
             }
         }
         stage ('Deploy to Blue ENV') {
