@@ -35,9 +35,9 @@ pipeline {
         stage ('Deploy to DEV') {
             steps {
                 
-                sh 'docker -H :1234 stop organocart-dev || true'
-                sh 'docker -H :1234 rm organocart-dev || true'
-                sh 'docker -H :1234 run -d -it --name organocart-dev -p 9005:8080 -v $(pwd)/OrganoCart/target/OrganoCart.war:/usr/local/tomcat/webapps/organocart.war tomcat'
+                sh 'docker -H :1234 stop organocart-prod || true'
+                sh 'docker -H :1234 rm organocart-prod || true'
+                sh 'docker -H :1234 run -d -it --name organocart-prod -p 9005:8080 -v $(pwd)/OrganoCart/target/OrganoCart.war:/usr/local/tomcat/webapps/organocart.war tomcat'
 
             }
         }
