@@ -40,7 +40,6 @@ pipeline {
         stage ('Push Image to DockerHub') {
             steps {
                 sh 'docker -H :1234 login -u santoshkatageri  -p S$s8880608429 https://hub.docker.com/' 
-                sh 'docker -H :1234 tag organocart-blue santoshkatageri/organocart-blue:latest'
                 sh 'docker -H :1234 push santoshkatageri/organocart-blue:latest'
                 
             }
