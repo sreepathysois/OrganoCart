@@ -33,6 +33,7 @@ pipeline {
         }
         stage ('Build Docker Image') {
             steps {
+                sh 'cp OrganoCart/target/OrganoCart.war OrganoCart.war'
                 sh 'docker -H :1234 build -f OrganoCart/dockerfile -t santoshkatageri/organocart-blue .'  
             }
         }
