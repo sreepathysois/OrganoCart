@@ -32,12 +32,12 @@ pipeline {
             }
         }
         
-        stage ('Deploy to DEV Env') {
+        stage ('Deploy to DEV') {
             steps {
                 
-                sh 'docker stop organocart-dev'
-                sh 'docker rm -f organocart-dev'
-                sh 'docker run -d -it --name organocart-dev -p 9005:8080 -v $(pwd)/OrganoCart/target/OrganoCart.war:/usr/local/tomcat/webapps/organocart.war tomcat'
+                sh 'docker -H :1234 stop organocart-dev || true'
+                sh 'docker -H :1234 rm organocart-dev || true'
+                sh 'docker -H :1234 run -d -it --name organocart-dev -p 9000:8080 -v $(pwd)/OrganoCart/target/OrganoCart.war:/usr/local/tomcat/webapps/organocart.war tomcat'
 
             }
         }
