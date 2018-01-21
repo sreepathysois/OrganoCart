@@ -32,15 +32,20 @@ pipeline {
             }
         }
         
+        stage ('Post Review to ReviewBoard') {
+            steps {
+                sh 'git checkout development'
+                sh '/root/OrganoCart/OrganoCart/rbt post' 
+            }
+        }
+
         stage ('Deploy to DEV') {
             steps {
                 
                 sh 'docker -H :1234 stop organocart-prod || true'
                 sh 'docker -H :1234 rm organocart-prod || true'
-                sh 'docker -H :1234 stop organocart-prod-blue || true'
-                sh 'docker -H :1234 rm organocart-prod-blue || true'
                 sh 'docker -H :1234 run -d -it --name organocart-prod -p 9005:8080 -v $(pwd)/OrganoCart/target/OrganoCart.war:/usr/local/tomcat/webapps/organocart.war tomcat'
-                sh 'docker -H :1234 ps -a | grep "organocart"'
+                sh 'docker -H :1234 ps -a | grep "organocart-prod"'
 
             }
         }
