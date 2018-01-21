@@ -40,7 +40,6 @@ pipeline {
                 sh 'docker -H :1234 stop organocart-prod-blue || true'
                 sh 'docker -H :1234 rm organocart-prod-blue || true'
                 sh 'docker -H :1234 run -d -it --name organocart-prod -p 9005:8080 -v $(pwd)/OrganoCart/target/OrganoCart.war:/usr/local/tomcat/webapps/organocart.war tomcat'
-                sh 'docker -H :1234 run -d --name organocart-prod-blue -p 8081:8080 organocart-prod'
 
             }
         }
