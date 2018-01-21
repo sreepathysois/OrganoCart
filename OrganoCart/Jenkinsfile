@@ -31,13 +31,6 @@ pipeline {
                 sh 'mvn -Dmaven.test.failure.ignore=true  -f OrganoCart/pom.xml install' 
             }
         }
-        
-        stage ('Post Review to ReviewBoard') {
-            steps {
-                sh 'git checkout development'
-                sh 'cd /root/OrganoCart/OrganoCart/ && rbt post' 
-            }
-        }
 
         stage ('Deploy to DEV') {
             steps {
