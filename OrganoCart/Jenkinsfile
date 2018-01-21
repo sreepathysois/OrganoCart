@@ -60,7 +60,7 @@ pipeline {
                 sh 'docker -H :1234 run -d --name organocart-blue-1 -p 8087:8080 organocart-docker.jfrog.io/organocart-blue:latest'
                 sh 'docker -H :1234 run -d --name organocart-blue-2 -p 8088:8080 organocart-docker.jfrog.io/organocart-blue:latest'
                 sh 'docker -H :1234 run -d --name organocart-blue-3 -p 8089:8080 organocart-docker.jfrog.io/organocart-blue:latest'
-                sh 'docker -H :1234 ps -a | grep "organocart"
+                sh 'docker -H :1234 ps -a | grep "organocart"'
             }
         }
     }
