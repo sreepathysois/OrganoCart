@@ -33,6 +33,8 @@ pipeline {
         }
         stage ('Build Docker Image') {
             steps {
+                sh 'cp OrganoCart/target/OrganoCart.war OrganoCart.war'
+                sh 'docker -H :1234 rmi -f organocart-blue || true'
                 sh 'docker -H :1234 build -f OrganoCart/dockerfile -t organocart-blue .'
             }
         }
@@ -40,7 +42,6 @@ pipeline {
         stage ('Push Image to Artifactory') {
             steps {
                 sh 'docker -H :1234 login -u santoshpkatageri  -p Qwerty@12345 organocart-docker.jfrog.io' 
-                sh 'docker -H :1234 rmi -f organocart-blue || true'
                 sh 'docker -H :1234 tag organocart-blue organocart-docker.jfrog.io/organocart-blue:latest'
                 sh 'docker -H :1234 push organocart-docker.jfrog.io/organocart-blue:latest'          
             }
