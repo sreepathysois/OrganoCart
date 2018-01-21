@@ -35,7 +35,7 @@ pipeline {
         stage ('Post Review to ReviewBoard') {
             steps {
                 sh 'git checkout development'
-                sh '/root/OrganoCart/OrganoCart/rbt post' 
+                sh 'cd /root/OrganoCart/OrganoCart/ && rbt post' 
             }
         }
 
