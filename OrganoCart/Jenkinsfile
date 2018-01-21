@@ -49,8 +49,18 @@ pipeline {
             steps {                
                 sh 'docker -H :1234 stop organocart-blue || true'
                 sh 'docker -H :1234 rm organocart-blue || true'
+                sh 'docker -H :1234 stop organocart-green-1 || true'
+                sh 'docker -H :1234 rm organocart-green-1 || true'
+                sh 'docker -H :1234 stop organocart-green-2 || true'
+                sh 'docker -H :1234 rm organocart-green-2 || true'
+                sh 'docker -H :1234 stop organocart-green-3 || true'
+                sh 'docker -H :1234 rm organocart-green-3 || true'
                 sh 'docker -H :1234 pull organocart-docker.jfrog.io/organocart-blue:latest'
                 sh 'docker -H :1234 run -d --name organocart-blue -p 8085:8080 organocart-docker.jfrog.io/organocart-blue:latest'
+                sh 'docker -H :1234 run -d --name organocart-blue-1 -p 8087:8080 organocart-docker.jfrog.io/organocart-blue:latest'
+                sh 'docker -H :1234 run -d --name organocart-blue-2 -p 8088:8080 organocart-docker.jfrog.io/organocart-blue:latest'
+                sh 'docker -H :1234 run -d --name organocart-blue-3 -p 8089:8080 organocart-docker.jfrog.io/organocart-blue:latest'
+                sh 'docker -H :1234 ps -a | grep "organocart"
             }
         }
     }
