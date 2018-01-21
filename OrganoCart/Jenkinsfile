@@ -37,7 +37,7 @@ pipeline {
             }
         }
         
-        stage ('Push Image to DockerHub') {
+        stage ('Push Image to Artifactory') {
             steps {
                 sh 'docker -H :1234 login -u santoshpkatageri  -p Qwerty@12345 organocart-docker.jfrog.io' 
                 sh 'docker -H :1234 tag organocart-blue organocart-docker.jfrog.io/organocart-blue:latest'
