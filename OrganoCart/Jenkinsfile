@@ -34,16 +34,17 @@ pipeline {
         stage ('Build Docker Image') {
             steps {
                 sh 'cp OrganoCart/target/OrganoCart.war OrganoCart.war'
-                sh 'docker -H :1234 build -f OrganoCart/dockerfile -t santoshkatageri/organocart-green .' 
+                sh 'docker -H :1234 rmi -f organocart-green:latest'
+                sh 'docker -H :1234 build -f OrganoCart/dockerfile -t organocart-green .' 
                 
             }
         }
         
-        stage ('Push Image to DockerHub') {
+        stage ('Push Image to Artifactory') {
             steps {
-                sh 'docker -H :1234 login -u santoshkatageri  -p S$s8880608429 https://hub.docker.com/' 
-                sh 'docker -H :1234 push santoshkatageri/organocart-green:latest'
-                
+                sh 'docker -H :1234 login -u santoshpkatageri -p Qwerty@12345 organocart-docker.jfrog.io' 
+                sh 'docker -H :1234 tag organocart-green organocart-docker.jfrog.io/organocart-green:latest'
+                sh 'docker -H :1234 push organocart-docker.jfrog.io/organocart-green:latest'
             }
         }
         
@@ -51,7 +52,8 @@ pipeline {
             steps {
                 sh 'docker -H :1234 stop organocar-green || true'
                 sh 'docker -H :1234 rm organocart-green || true'
-                sh 'docker -H :1234 run -d --name organocart-green -p 8085:8080 santoshkatageri/organocart-green:latest'
+                sh 'docker -H :1234 pull organocart-docker.jfrog.io/organocart-green:latest'
+                sh 'docker -H :1234 run -d --name organocart-green -p 8085:8080 organocart-docker.jfrog.io/organocart-green:latest'
 
             }
         }
