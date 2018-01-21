@@ -53,7 +53,7 @@ pipeline {
                 sh 'docker -H :1234 stop organocart-green || true'
                 sh 'docker -H :1234 rm organocart-green || true'
                 sh 'docker -H :1234 pull organocart-docker.jfrog.io/organocart-green:latest'
-                sh 'docker -H :1234 run -d --name organocart-green -p 8085:8080 organocart-docker.jfrog.io/organocart-green:latest'
+                sh 'docker -H :1234 run -d --name organocart-green -p 8086:8080 organocart-docker.jfrog.io/organocart-green:latest'
 
             }
         }
